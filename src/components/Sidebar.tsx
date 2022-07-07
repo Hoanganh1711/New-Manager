@@ -2,7 +2,7 @@ import {
     FormOutlined,
     UserOutlined,
     HomeFilled,
-    AppstoreOutlined
+    HighlightOutlined
 } from '@ant-design/icons';   
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
@@ -36,12 +36,12 @@ const Sidebar = () => {
         },
         {
             key: "userManagement",
-            title: "Quản lý người dùng",
+            title: "User",
             children: [
                 {
-                    key: "user",
-                    icon: <UserOutlined />,
-                    title: "Thông tin người dùng",
+                    key: "NewsManager",
+                    icon: <HighlightOutlined />,
+                    title: "Quản lý bài viết",
                     link: "./User"
                 }
             ]
@@ -61,7 +61,7 @@ const Sidebar = () => {
                                 </NavLink>
                             </Menu.Item>
                         ) : (
-                            <Menu.SubMenu key={item.key} title={item.title} icon={<AppstoreOutlined />}>
+                            <Menu.SubMenu key={item.key} title={item.title} icon={<UserOutlined />}>
                                 {item.children.map((child) =>
                                     <Menu.Item key={child.key}>
                                         <NavLink className="d-flex align-items-center" to={child.link}>
