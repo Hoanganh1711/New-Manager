@@ -2,9 +2,11 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { Route, Routes } from 'react-router-dom';
 import PostNewForm from './components/PostNewForm';
-import Sidebar from './components/Sidebar';
-import User from './components/PostedNewsManager/NewsManager';
+import Sidebar from './Sidebar';
+import NewsManager from './components/User/NewsManager';
+import ShowNews from './components/ShowNews';
 import './App.css';
+import UserInfo from './components/User/UserInfo';
 
 const { Content, Footer } = Layout;
 
@@ -22,7 +24,9 @@ const App = () => {
 
             <Routes>
               <Route path="/PostNewForm" element={<PostNewForm />} />
-              <Route path="/User" element={<User />} />
+              <Route path="/NewsManager" element={<NewsManager />} />
+              <Route path="/ShowNews" element={<ShowNews />} />
+              <Route path="/UserInfo" element={<UserInfo />} />
             </Routes>
             
           </div>

@@ -145,8 +145,8 @@ const NewsTable: React.FC = () => {
       render: () => {
         return (
           <>
-            <Button type='link' danger>Delete</Button>
-            <Button type='link'>Edit</Button>
+            <Button type='link' danger>Xóa tin</Button>
+            <Button type='link'>Sửa tin</Button>
           </>
         )
       }

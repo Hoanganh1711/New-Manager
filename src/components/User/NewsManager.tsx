@@ -4,7 +4,7 @@ import React from 'react'
 
 import NewsTable from './NewsTable'
 
-const PostedManager = () => {
+const NewsManager = () => {
 
 
   return (
@@ -64,4 +64,4 @@ const PostedManager = () => {
   )
 }
 
-export default PostedManager
+export default NewsManager

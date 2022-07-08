@@ -2,7 +2,10 @@ import {
     FormOutlined,
     UserOutlined,
     HomeFilled,
-    HighlightOutlined
+    HighlightOutlined,
+    SnippetsOutlined,
+    GlobalOutlined,
+    SolutionOutlined
 } from '@ant-design/icons';   
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
@@ -39,13 +42,43 @@ const Sidebar = () => {
             title: "User",
             children: [
                 {
+                    key: "UserInfo",
+                    icon: <SolutionOutlined />,
+                    title: "Thông tin cá nhân",
+                    link: "./UserInfo"
+                },
+                {
                     key: "NewsManager",
-                    icon: <HighlightOutlined />,
+                    icon: <SnippetsOutlined />,
                     title: "Quản lý bài viết",
-                    link: "./User"
+                    link: "./NewsManager"
+                },
+                {
+                    key: "ShowNews",
+                    icon: <GlobalOutlined />,
+                    title: "Tin tức",
+                    link: "./ShowNews"
                 }
             ]
-        }
+        },
+        // {
+        //     key: "userManagement",
+        //     title: "Addmin",
+        //     children: [
+        //         {
+        //             key: "NewsManager",
+        //             icon: <SnippetsOutlined />,
+        //             title: "Quản lý bài viết",
+        //             link: "./NewsManager"
+        //         },
+        //         {
+        //             key: "ShowNews",
+        //             icon: <GlobalOutlined />,
+        //             title: "Tin tức",
+        //             link: "./ShowNews"
+        //         }
+        //     ]
+        // }
     ];
 
     return (

@@ -23,3 +23,12 @@ code {
 .ck.ck-reset.ck-editor.ck-rounded-corners {
   width: 100%;
 }
+
+.hide {
+  overflow: hidden;
+  max-height: 13ch;
+}
+
+.show {
+  max-height: 100%;
+}
