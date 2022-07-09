@@ -98,7 +98,6 @@ const ShowNews = () => {
                             <p><span><b>?</b></span> lượt xem</p>
                             <p><span><b>?</b></span> người theo dõi</p>
                             <p><span><b>?</b></span> đang theo dõi</p>
-
                         </div>
 
                         <div className='select-options' style={{ marginTop: 20, backgroundColor: "#fff", padding: 10, borderRadius: 5 }}>
