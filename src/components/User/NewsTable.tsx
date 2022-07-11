@@ -7,29 +7,65 @@ import React, { useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import 'antd/dist/antd.css';
 
-
 const NewsTable: React.FC = () => {
 
   interface DataType {
     key: string;
     title: string;
-    topic: number;
+    topic: string;
     date: string;
   }
 
   type DataIndex = keyof DataType;
 
-  const data: DataType[] = [
+  const datas: DataType[] = [
     {
       key: '1',
-      title: 'John Brown',
-      topic: 32,
+      title: 'A',
+      topic: "Chủ đề 1",
+      date: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '2',
+      title: 'B',
+      topic: "Chủ đề 2",
+      date: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '3',
+      title: 'C',
+      topic: "Chủ đề 3",
+      date: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '4',
+      title: 'D',
+      topic: "Chủ đề 4",
       date: 'New York No. 1 Lake Park',
     },
   ];
 
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
+  const [listData, setListData] = useState(datas)
+
+  const deleteOneNew = (index: any, row: any) => {
+    // const newListData = [...listData]
+    // newListData.splice(row, 1)
+    // setListData(newListData)
+    // console.log(index, row.key);
+
+    const filtered = listData.filter((data) => {
+      console.log(data);
+      
+
+      return data.key !== row.key
+
+    })
+    setListData(filtered)
+    console.log((filtered));
+  }
+
   const searchInput = useRef<InputRef>(null);
 
   const handleSearch = (
@@ -122,30 +158,46 @@ const NewsTable: React.FC = () => {
       key: 'title',
       width: '30%',
       ...getColumnSearchProps('title'),
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      render: (text: string) => <a href='#'>{text}</a>,
     },
     {
       title: 'Chủ đề',
       dataIndex: 'topic',
       key: 'topic',
       width: '20%',
-      ...getColumnSearchProps('topic'),
+      filters: [
+        {
+          text: 'Chủ đề 1',
+          value: 'Chủ đề 1',
+        },
+        {
+          text: 'Chủ đề 2',
+          value: 'Chủ đề 2',
+        },
+        {
+          text: 'Chủ đề 3',
+          value: 'Chủ đề 3',
+        },
+      ],
+      onFilter: (value: any, record: any) => record.topic.indexOf(value) === 0,
     },
     {
       title: 'Ngày đăng',
       dataIndex: 'date',
       key: 'date',
-      ...getColumnSearchProps('date'),
-      sorter: (a, b) => a.date.length - b.date.length,
+      // ...getColumnSearchProps('date'),
+      // sorter: (a, b) => a.date.length - b.date.length,
       sortDirections: ['descend', 'ascend'],
     },
     {
       title: 'Xử lý',
-      dataIndex: '',
-      key: 'x',
-      render: () => {
+      dataIndex: 'action',
+      key: 'action',
+      render: (abc, row) => {
         return (
           <>
-            <Button type='link' danger>Xóa tin</Button>
+            <Button onClick={() => deleteOneNew(abc, row)} type='link' danger>Xóa tin</Button>
             <Button type='link'>Sửa tin</Button>
           </>
         )
@@ -155,7 +207,7 @@ const NewsTable: React.FC = () => {
 
   return (
     <>
-      <Table style={{ textAlign: "center" }} columns={columns} dataSource={data} />
+      <Table style={{ textAlign: "center" }} columns={columns} dataSource={listData} />
     </>
   )
 }

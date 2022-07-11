@@ -32,10 +32,10 @@ const Sidebar = () => {
             link: "/"
         },
         {
-            key: "form",
-            icon: <FormOutlined />,
-            title: "Đăng tin",
-            link: "./PostNewForm"
+            key: "ShowNews",
+            icon: <GlobalOutlined />,
+            title: "Tin tức",
+            link: "./ShowNews"
         },
         {
             key: "userManagement",
@@ -48,17 +48,17 @@ const Sidebar = () => {
                     link: "./UserInfo"
                 },
                 {
+                    key: "form",
+                    icon: <FormOutlined />,
+                    title: "Đăng tin",
+                    link: "./PostNewForm"
+                },
+                {
                     key: "NewsManager",
                     icon: <SnippetsOutlined />,
                     title: "Quản lý bài viết",
                     link: "./NewsManager"
                 },
-                {
-                    key: "ShowNews",
-                    icon: <GlobalOutlined />,
-                    title: "Tin tức",
-                    link: "./ShowNews"
-                }
             ]
         },
         // {

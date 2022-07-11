@@ -1,5 +1,5 @@
-import { MailOutlined, MoneyCollectOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
-import { Col, Divider, Row } from 'antd'
+import { MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
+import { Col, Row } from 'antd'
 import React from 'react'
 
 import NewsTable from './NewsTable'
@@ -30,10 +30,9 @@ const NewsManager = () => {
                 </Row>
               </div>
               <div className='icons-group'>
-                <MoneyCollectOutlined />
-                <span>0</span>
                 <div style={{ marginTop: 5 }}>
                   <UserOutlined />
+                  Khách
                 </div>
                 <div style={{ marginTop: 5 }}>
                   <PhoneOutlined />
@@ -50,7 +49,7 @@ const NewsManager = () => {
 
         <Col span={14}>
           <Row className='buttoms-group' style={{ justifyContent: "right" }}>
-            <div style={{ color: "#fff", backgroundColor: "#0298da", padding: "5px 20px", border: "none", borderRadius: 5 }}>Đăng tin</div>
+            <div style={{ color: "#fff", backgroundColor: "#0298da", padding: "5px 20px", border: "none", borderRadius: 5 }}>Thêm bài viết</div>
             {/* <div style={{ color: "#000", padding: "5px 20px", border: "solid 1px #000", borderRadius: 5, marginLeft: 20 }}>Nạp tiền</div>
             <div style={{ color: "#000", padding: "5px 20px", border: "solid 1px #000", borderRadius: 5, marginLeft: 20 }}>Đổi điểm</div> */}
           </Row>

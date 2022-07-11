@@ -1,5 +1,5 @@
 import { FormOutlined, MailOutlined, MessageOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
-import { Avatar, Col, Divider, Row } from 'antd'
+import { Avatar, Col, Row } from 'antd'
 import React from 'react'
 
 import ChangeUserInfo from './ChangeUserInfo'
