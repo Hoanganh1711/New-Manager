@@ -114,7 +114,7 @@ const ShowNews = () => {
                         </div>
 
                         {newData.map(data => (
-                            <div className='new-contener' style={{ backgroundColor: "#fff", marginTop: 20 }}>
+                            <div key={data.id} className='new-contener' style={{ backgroundColor: "#fff", marginTop: 20 }}>
 
                                 <div style={{ padding: 20, }}>
                                     <h2 className='new-title'>Tỉnh Hậu Giang vừa quyết định chấp thuận chủ trương đầu tư dự án KĐT Trung tâm thành phố Ngã Bảy</h2>

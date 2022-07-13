@@ -44,16 +44,21 @@
 }
 
 .ant-layout-sider-has-trigger {
-  flex: 0 0 200px;
+  /* flex: 0 0 200px;
   max-width: 200px;
   min-width: 200px;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
+  width: 200px; */
+  /* position: fixed; */
+  /* z-index: 1; */
+  /* top: 0;
+  bottom: 0; */
 }
 
-.site-layout {
+/* .site-layout {
+  margin-top: 50px;
   margin-left: 200px !important;
+} */
+
+.site-layout-background {
+  /* background-color: #fff; */
 }

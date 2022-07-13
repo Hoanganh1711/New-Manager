@@ -1,15 +1,15 @@
+/* eslint-disable jsx-a11y/alt-text */
 import {
     FormOutlined,
     UserOutlined,
     HomeFilled,
-    HighlightOutlined,
     SnippetsOutlined,
     GlobalOutlined,
-    SolutionOutlined
-} from '@ant-design/icons';   
+    SolutionOutlined,
+} from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import {Layout, Menu } from 'antd';
+import { useState } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 const { Sider } = Layout;
 
@@ -20,16 +20,16 @@ const { Sider } = Layout;
 
 
 const Sidebar = () => {
-    
+
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
-    
+
     const items = [
         {
             key: "home",
             icon: <HomeFilled />,
             title: "Trang chủ",
-            link: "/"
+            link: "./HomePage"
         },
         {
             key: "ShowNews",
@@ -39,7 +39,7 @@ const Sidebar = () => {
         },
         {
             key: "userManagement",
-            title: "User",
+            title: "Admin",
             children: [
                 {
                     key: "UserInfo",
@@ -83,8 +83,9 @@ const Sidebar = () => {
 
     return (
         <>
-            <Sider style={{}} collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
+            <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
                 <Menu theme="dark" defaultSelectedKeys={[location.pathname]} mode="inline">
+                    <img key="logo" style={{ width: "60%", marginLeft: 20 }} src='https://img.vn/uploads/version/img24-png-20190726133727cbvncjKzsQ.png'></img>
                     {items.map((item) =>
                         !item.children ? (
                             <Menu.Item key={item.key}>

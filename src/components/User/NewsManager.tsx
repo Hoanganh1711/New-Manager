@@ -3,6 +3,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 
 import NewsTable from './NewsTable'
+import PostNewForm from './PostNewForm'
 
 const NewsManager = () => {
 
@@ -32,7 +33,7 @@ const NewsManager = () => {
               <div className='icons-group'>
                 <div style={{ marginTop: 5 }}>
                   <UserOutlined />
-                  Khách
+                  Admin
                 </div>
                 <div style={{ marginTop: 5 }}>
                   <PhoneOutlined />

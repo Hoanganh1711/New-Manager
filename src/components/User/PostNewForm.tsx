@@ -1,13 +1,17 @@
 import { Col, Form, Input, Select } from 'antd'
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
-// import 'src/index.css';
-import { useState } from 'react';
+import 'C:/Users/Admin/Desktop/News Manager Project/src/index.css'
+import { useId, useState } from 'react';
 import { UploadFile } from 'antd/lib/upload/interface';
 import TextArea from 'antd/lib/input/TextArea';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { text } from 'stream/consumers';
 
 
 const PostNewForm = () => {
+    const [htmlId]: any = useId();
 
     const { Option } = Select;
 
@@ -44,7 +48,7 @@ const PostNewForm = () => {
         setInputTitle(e.target.value)
     }
 
-    const handleInputConent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInputContent = (e: any) => {
         setInputContent(e.target.value)
     }
 
@@ -54,13 +58,8 @@ const PostNewForm = () => {
 
     const onFinish = (value: any) => {
         console.log('Success:', value);
+        // addOneNew(inputTitle, inputTopic)
     };
-
-    const addNew = () => {
-
-    }
-
-
 
     return (
         <Col span={15} style={{ margin: "0 auto 0 auto" }}>
@@ -107,21 +106,7 @@ const PostNewForm = () => {
                                     message: 'Hãy nhập nội dung của bài viết!',
                                 }
                             ]}>
-                            {/* <CKEditor
-                                editor={ClassicEditor}
-                                data=""
-                                onReady={(editor: any) => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log('Editor is ready to use!', editor);
-                                }}
-                                onChange={(event: any, editor: { getData: () => any; }) => {
-                                    const data = editor.getData();
-                                    // console.log({ event, editor, data });
-                                    setInputContent(data)
-                                    // console.log(inputContent)
-                                }}
-                            /> */}
-                            <TextArea onChange={handleInputConent} style={{ height: 120 }} />
+                            <ReactQuill value={inputContent} onChange={handleInputContent} />
                         </Form.Item>
 
                         <Form.Item
@@ -157,7 +142,5 @@ const PostNewForm = () => {
     )
 }
 
-
-
-
 export default PostNewForm
+

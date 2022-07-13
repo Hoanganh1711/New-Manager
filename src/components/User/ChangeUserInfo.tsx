@@ -4,7 +4,7 @@ import React from 'react'
 const ChangeUserInfo = () => {
 
     const userData = [
-        {
+        {   
             fullName: "Anh Nguyễn Hoàng",
             birthday: "17/11/1993",
             Email: "hoanggiaanh171193@gmail.com",
@@ -15,9 +15,9 @@ const ChangeUserInfo = () => {
 
     return (
         <>
-            {userData.map(data => {
+            {userData.map((data) => {
                 return (
-                    <div style={{ backgroundColor: "#fff", borderRadius: 10, padding: 20 }}>
+                    <div key="data" style={{ backgroundColor: "#fff", borderRadius: 10, padding: 20 }}>
                         <h3>Cài đặt thông tin</h3>
                         <div style={{ marginTop: 30 }}>
                             <Row style={{justifyContent: "space-between"}}>

@@ -3,14 +3,19 @@ import type { InputRef } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/lib/table';
 import type { FilterConfirmProps } from 'antd/lib/table/interface';
-import React, { useRef, useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import 'antd/dist/antd.css';
+import nextId from "react-id-generator";
+
+import PostNewForm from './PostNewForm';
 
 const NewsTable: React.FC = () => {
+  const [htmlId]: any = useId();
 
   interface DataType {
-    key: string;
+    id: any;
+    key: string,
     title: string;
     topic: string;
     date: string;
@@ -20,27 +25,31 @@ const NewsTable: React.FC = () => {
 
   const datas: DataType[] = [
     {
+      id: {htmlId},
       key: '1',
       title: 'A',
       topic: "Chủ đề 1",
       date: 'New York No. 1 Lake Park',
     },
     {
+      id: {htmlId},
       key: '2',
       title: 'B',
       topic: "Chủ đề 2",
       date: 'New York No. 1 Lake Park',
     },
     {
+      id: {htmlId},
       key: '3',
       title: 'C',
       topic: "Chủ đề 3",
       date: 'New York No. 1 Lake Park',
     },
     {
+      id: {htmlId},
       key: '4',
       title: 'D',
-      topic: "Chủ đề 4",
+      topic: "Chủ đề 1",
       date: 'New York No. 1 Lake Park',
     },
   ];
@@ -50,21 +59,22 @@ const NewsTable: React.FC = () => {
   const [listData, setListData] = useState(datas)
 
   const deleteOneNew = (index: any, row: any) => {
-    // const newListData = [...listData]
-    // newListData.splice(row, 1)
-    // setListData(newListData)
-    // console.log(index, row.key);
-
     const filtered = listData.filter((data) => {
       console.log(data);
-      
 
-      return data.key !== row.key
+
+      return data.id !== row.id
 
     })
     setListData(filtered)
     console.log((filtered));
   }
+
+  // const addOneNew = (inputTitle: any, inputTopic: any, inputConten: any,) => {
+  //   let copy = [...listData]
+  //   copy = [...copy, { id: {htmlId}, key: inputTitle, title: inputTitle, topic: inputTopic, date: "New York No. 1 Lake Park" }];
+  //   setListData(copy);
+  // }
 
   const searchInput = useRef<InputRef>(null);
 

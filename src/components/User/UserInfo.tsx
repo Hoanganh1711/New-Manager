@@ -27,7 +27,7 @@ const UserInfo = () => {
           </Row>
           <div style={{ textAlign: "left", marginTop: 10 }}>
             <UserOutlined />
-            Khách
+            Admin
           </div>
           <div style={{ textAlign: "left", marginTop: 10 }}>
             <MailOutlined />
