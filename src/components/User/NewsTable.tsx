@@ -3,7 +3,7 @@ import type { InputRef } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { ColumnsType, ColumnType } from 'antd/lib/table';
 import type { FilterConfirmProps } from 'antd/lib/table/interface';
-import React, { useId, useRef, useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import 'antd/dist/antd.css';
 import nextId from "react-id-generator";
@@ -23,58 +23,33 @@ const NewsTable: React.FC = () => {
 
   type DataIndex = keyof DataType;
 
-  const datas: DataType[] = [
-    {
-      id: {htmlId},
-      key: '1',
-      title: 'A',
-      topic: "Chủ đề 1",
-      date: 'New York No. 1 Lake Park',
-    },
-    {
-      id: {htmlId},
-      key: '2',
-      title: 'B',
-      topic: "Chủ đề 2",
-      date: 'New York No. 1 Lake Park',
-    },
-    {
-      id: {htmlId},
-      key: '3',
-      title: 'C',
-      topic: "Chủ đề 3",
-      date: 'New York No. 1 Lake Park',
-    },
-    {
-      id: {htmlId},
-      key: '4',
-      title: 'D',
-      topic: "Chủ đề 1",
-      date: 'New York No. 1 Lake Park',
-    },
-  ];
-
+  const [newsList, setNewsList] = useState<any[]>([])
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
-  const [listData, setListData] = useState(datas)
+
+  const newsListAPI = async () => {
+    const url = 'https://heroku-manager-news.herokuapp.com/api/test/all'
+    const response = await fetch(url)
+    const newsData = await response.json()
+    console.log(newsData);
+    setNewsList(newsData)
+  }
+
+  useEffect(() => {
+    newsListAPI()
+  }, [])
 
   const deleteOneNew = (index: any, row: any) => {
-    const filtered = listData.filter((data) => {
+    const filtered = newsList.filter((data) => {
       console.log(data);
 
 
       return data.id !== row.id
 
     })
-    setListData(filtered)
+    setNewsList(filtered)
     console.log((filtered));
   }
-
-  // const addOneNew = (inputTitle: any, inputTopic: any, inputConten: any,) => {
-  //   let copy = [...listData]
-  //   copy = [...copy, { id: {htmlId}, key: inputTitle, title: inputTitle, topic: inputTopic, date: "New York No. 1 Lake Park" }];
-  //   setListData(copy);
-  // }
 
   const searchInput = useRef<InputRef>(null);
 
@@ -196,8 +171,6 @@ const NewsTable: React.FC = () => {
       title: 'Ngày đăng',
       dataIndex: 'date',
       key: 'date',
-      // ...getColumnSearchProps('date'),
-      // sorter: (a, b) => a.date.length - b.date.length,
       sortDirections: ['descend', 'ascend'],
     },
     {
@@ -217,7 +190,7 @@ const NewsTable: React.FC = () => {
 
   return (
     <>
-      <Table style={{ textAlign: "center" }} columns={columns} dataSource={listData} />
+      <Table style={{ textAlign: "center" }} columns={columns} dataSource={newsList} />
     </>
   )
 }

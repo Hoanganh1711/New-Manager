@@ -1,11 +1,17 @@
 import { Col } from 'antd'
-import React from 'react'
-import HotNews from './HomePageContents/HotNews'
+import React, { useEffect } from 'react'
+import { json } from 'stream/consumers'
+import AllNews from './HomePageContents/AllNews'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 const HomePage = () => {
+
   return (
     <div>
-      <HotNews/>
+      <SignIn/>
+      <SignUp/>
+      <AllNews/>
     </div>
   )
 }

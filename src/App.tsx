@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { Route, Routes } from 'react-router-dom';
 import PostNewForm from './components/User/PostNewForm';
-import Sidebar from './Sidebar';
+import Sidebar from './components/Sidebar';
 import NewsManager from './components/User/NewsManager';
 import ShowNews from './components/ShowNews';
 import './App.css';

@@ -2,16 +2,14 @@ import { Col, Form, Input, Select } from 'antd'
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import 'C:/Users/Admin/Desktop/News Manager Project/src/index.css'
-import { useId, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UploadFile } from 'antd/lib/upload/interface';
-import TextArea from 'antd/lib/input/TextArea';
-import ReactQuill from 'react-quill';
+import  ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
-import { text } from 'stream/consumers';
+
 
 
 const PostNewForm = () => {
-    const [htmlId]: any = useId();
 
     const { Option } = Select;
 
@@ -35,31 +33,28 @@ const PostNewForm = () => {
         // },
     ];
 
-    const [inputTitle, setInputTitle] = useState("")
-    const [inputTopic, setInputTopic] = useState("")
-    const [inputContent, setInputContent] = useState("")
-    const [photo, setPhoto] = useState(fileList)
+    // const [inputedValue, setInputedValue] = useState([])
 
-    const handleInputTopic = (e: any) => {
-        setInputTopic(e)
-    }
-
-    const handleInputTitle = (e: any) => {
-        setInputTitle(e.target.value)
-    }
-
-    const handleInputContent = (e: any) => {
-        setInputContent(e.target.value)
-    }
-
-    const handleUploadPhoto = (e: any) => {
-        setPhoto(e.fileList)
-    }
+    const newsAPI = "https://heroku-manager-news.herokuapp.com/api/test/user"
 
     const onFinish = (value: any) => {
         console.log('Success:', value);
-        // addOneNew(inputTitle, inputTopic)
+        const topic = "";
+        const title = value.title;
+        const content = value.content;
+        const photo = value.upload;
+        
+        const option = {
+            method: "POST",
+            body: JSON.stringify(value)
+        }
+
+        fetch(newsAPI, option)
+            .then((response) => {
+                response.json()
+            })
     };
+
 
     return (
         <Col span={15} style={{ margin: "0 auto 0 auto" }}>
@@ -71,7 +66,7 @@ const PostNewForm = () => {
                         onFinish={onFinish}
                     >
                         <Form.Item
-                            name="select"
+                            name="topic"
                             hasFeedback
                             rules={[
                                 {
@@ -80,7 +75,7 @@ const PostNewForm = () => {
                                 },
                             ]}
                         >
-                            <Select onChange={handleInputTopic} placeholder="Chọn chủ đề *">
+                            <Select placeholder="Chọn chủ đề *">
                                 <Option value="Chủ đề 1">Chủ đề 1</Option>
                                 <Option value="Chủ đề 2">Chủ đề 2</Option>
                                 <Option value="Chủ đề 3">Chủ đề 3</Option>
@@ -88,14 +83,14 @@ const PostNewForm = () => {
                         </Form.Item>
 
                         <Form.Item
-                            name="topic"
+                            name="title"
                             rules={[
                                 {
                                     required: true,
                                     message: 'Hãy nhập tiêu đề của bài viết!',
                                 }
                             ]}>
-                            <Input onChange={handleInputTitle} showCount maxLength={20} placeholder='Nhập tiêu đề bài viết *' />
+                            <Input showCount maxLength={20} placeholder='Nhập tiêu đề bài viết *' />
                         </Form.Item>
 
                         <Form.Item
@@ -106,7 +101,7 @@ const PostNewForm = () => {
                                     message: 'Hãy nhập nội dung của bài viết!',
                                 }
                             ]}>
-                            <ReactQuill value={inputContent} onChange={handleInputContent} />
+                            <ReactQuill theme="snow" />
                         </Form.Item>
 
                         <Form.Item
@@ -119,7 +114,7 @@ const PostNewForm = () => {
                                 listType="picture"
                                 // defaultFileList={[...fileList]}
                                 className="upload-list-inline"
-                                onChange={handleUploadPhoto}
+                                // onChange={handleUploadPhoto}
                             >
                                 <Button icon={<UploadOutlined />}>Thêm ảnh</Button>
                             </Upload>
